@@ -204,6 +204,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- Keybinds for nvim-tree
+vim.keymap.set('n', '<C-n>', '<cmd>NvimTreeToggle<CR>', { desc = 'Toggle NvimTree' })
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -747,6 +750,12 @@ require('lazy').setup({
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
     'rose-pine/neovim',
     priority = 1000, -- Make sure to load this before all the other start plugins.
+    highlight_groups = {
+      ColorColumn = { bg = 'rose' },
+      -- Blend colours against the "base" background
+      CursorLine = { bg = 'foam', blend = 10 },
+      StatusLine = { fg = 'love', bg = 'love', blend = 10 },
+    },
     init = function()
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
